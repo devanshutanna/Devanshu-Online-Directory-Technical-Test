@@ -1,0 +1,17 @@
+input {
+    border: none;
+    outline-color: #0000;
+}
+img {
+    width: 20px;
+}
+/* button {
+    background-color: #0000;
+    border: none;
+} */
+form {
+    width: 300px;
+}
+nav {
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.05);
+}

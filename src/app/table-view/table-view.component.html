@@ -1,0 +1,52 @@
+<app-search *ngIf="showSearch"></app-search>
+<!-- <button (click)="showAll()" *ngIf="!showSearch" class="back-btn">
+    <img class="back-img" src="./assets/images/Back.svg"> 
+    Back
+</button> -->
+<div *ngIf="!showSearch">
+    <button (click)="showAll()" class="back-btn">
+        <img class="back-img" src="./assets/images/Back.svg"> 
+        Back
+    </button>
+</div>
+<nav class="nav flex-column con">
+    <button (click)="showAll()">
+        <img class="img1" src="./assets/images/Home Icon.svg" alt="">
+    </button>
+    <button (click)="showStared()">
+        <img class="img2" src="./assets/images/Favourites Icon.svg" alt="">
+    </button>
+</nav>
+<div class="card">
+    <p-table [value]="users" [paginator]="true" [rows]="rows"  [showCurrentPageReport]="true" 
+        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries">
+        <ng-template pTemplate="header">
+            <tr>
+                <th pSortableColumn="first_name">   First Name <p-sortIcon field="first_name"></p-sortIcon></th>
+                <th pSortableColumn="last_name">    Last Name  <p-sortIcon field="last_name"></p-sortIcon></th>
+                <th pSortableColumn="email">        Email      <p-sortIcon field="email"></p-sortIcon></th>
+                <th pSortableColumn="phone_number"> Phone      <p-sortIcon field="phone_number"></p-sortIcon></th>
+                <th pSortableColumn="company_name"> Company    <p-sortIcon field="company_name"></p-sortIcon></th>
+            </tr>
+        </ng-template>
+        <ng-template class="table-had" pTemplate="body" let-user>
+            <tr>
+                <td>{{user.first_name}}</td>
+                <td>{{user.last_name}}</td>
+                <td>{{user.email}}</td>
+                <td>{{user.phone_number}}</td>
+                <td>{{user.company_name}}</td>
+                <td><button (click)="markStared(user)"><img width="30px" [src]="user.stared ? './assets/images/Star Outlined.svg':'./assets/images/Star Filled.svg' "></button></td>
+            </tr>
+        </ng-template>
+    </p-table>
+
+</div>
+    <div class="card">
+        <h5>Programmatic Control</h5>
+        <div class="p-mb-3">
+            <p-button type="button" icon="pi pi-chevron-left" (click)="prev()" [disabled]="isFirstPage()" styleClass="p-button-text"></p-button>
+            <p-button type="button" icon="pi pi-refresh" (click)="reset()" styleClass="p-button-text"></p-button>
+            <p-button type="button" icon="pi pi-chevron-right" (click)="next()" [disabled]="isLastPage()" styleClass="p-button-text"></p-button>
+    </div>
+</div>
